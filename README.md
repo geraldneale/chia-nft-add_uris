@@ -3,6 +3,12 @@ Automated system of aggregating all NFTs in a "wallet" and updating the URIs in 
 
 This works for me on my collection that I created using an NFT naming scheme that fits the program. You will have to modify. Open sourcing it because I don't think there are other examples online how to do this.
 
+Before and After Screenshots
+----------------------------
+Before:
+![Screenshot from 2022-11-02 12-10-58](https://user-images.githubusercontent.com/53587595/199543364-604714ff-665b-4765-81e5-2dba207292ad.png)
+
+
 
 Also check out
 ------------
