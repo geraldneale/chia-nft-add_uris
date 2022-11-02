@@ -32,7 +32,7 @@ nft_dicts = create_nfts_dict()
 print(nft_dicts)
 
 
-#license_uri = "https://bafybeifwxbe7ckkmjm5rxbimmnjkqyaxo7fx2ntvyvmgi3ge6wx7hd2b3a.ipfs.nftstorage.link/MojoPuzzlerChiaNFTAgreement-v1.pdf"
+license_uri = "https://bafybeifwxbe7ckkmjm5rxbimmnjkqyaxo7fx2ntvyvmgi3ge6wx7hd2b3a.ipfs.nftstorage.link/MojoPuzzlerChiaNFTAgreement-v1.pdf"
 #collection uris are broken down into releases of increasing qty to keep mistakes minimized.
 first_hundred = "https://bafybeidgh4ved45xgevocqajl5rbzwvkjvv3bnumcuxhjbldigenmb2qma.ipfs.nftstorage.link/" #2 nfts total
 second_hundred = "https://nftstorage.link/ipfs/bafybeicymmc2wggxfelyo7i6twai3ux24aiz3gpwijlfjlzspiexjva2nu/" #7 nfts
@@ -49,19 +49,21 @@ for nft_number in range(lower_limit,upper_limit):
     #toggle between these three depending on the type of uri update(license|metadata|data)
     #always start with those other than the data uri and finish with the data uri
     #because the key->value pair key is standardized on the original data uri
-    #nft_uri, uri_type = license_uri, "-lu" #license uri
-    #nft_uri, uri_type = first_hundred + "gneale-san_francisco{}.json".format(nft_number), "-mu #metadat uri
-    nft_uri, uri_type = life_seeking_darkness + "gneale-san_francisco{}.png".format(nft_number), "-u" #data uri
+    #nft_uri, uri_type = license_uri, "-lu"                                                             #license uri
+    #nft_uri, uri_type = first_hundred + "gneale-san_francisco{}.json".format(nft_number), "-mu         #metadata uri
+    nft_uri, uri_type = life_seeking_darkness + "gneale-san_francisco{}.png".format(nft_number), "-u"   #data uri
     
     nft_key = "https://mojopuzzler.org/nft/gnsf/gneale-san_francisco{}.png".format(nft_number)
+    #adjust fee for a high priority. pending transactions cause problems.
     fee = "0.00000001"
+    #delay is necessary to let each transaction settle onchain before starting a new one
     delay = 400 #time between txs in seconds
 
     #get the old nft data uri(key) find the current coin_id which is necessary to update any uri
     #using CLI update the uri. reason for CLI here instead of RPC like previous function is because RPC was 100x slower to transact (300 minutes vs 3 minutes).
     try: 
         nft_coin_id = nft_dicts[nft_key]
-    #    nft_coin_id, wallet_id = "0x145ee77c2e8c7ec7c1d3073ca8f229f8b8d5c7475018d19994a9a15c380d70d5","8" #throw away nft for testing
+        #nft_coin_id, wallet_id = "0x145ee77c2e8c7ec7c1d3073ca8f229f8b8d5c7475018d19994a9a15c380d70d5","8" #throw away nft for testing
         result = subprocess.run(["chia", "wallet", "nft", "add_uri",
         "-f", fprint,
         "-i", wallet_id,
@@ -73,7 +75,7 @@ for nft_number in range(lower_limit,upper_limit):
     #skip missing NFTs; sold, transferred, whatever    
     except KeyError:
         print("There is no {}".format(nft_key))
-            #write to file for reference
+        #write to log file for reference
         log_file = "add_url-log{}.txt".format(now)  
         with open(log_file, 'a') as outfile:
             outfile.write("{} not in this list.\n".format(nft_key))
