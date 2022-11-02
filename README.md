@@ -1,7 +1,7 @@
 # chia-nft-add_uris
 Automated system of aggregating all NFTs in a "wallet" and updating the URIs in bulk.
 
-This works for me on my collection that I created using an NFT naming scheme that fits the program. You will have to modify. I'm still releasing it open source because I don't think there are other examples online how to do this.
+This works for me on my collection that I created using an NFT naming scheme that fits the program. You will have to modify. Open sourcing it because I don't think there are other examples online how to do this.
 
 
 Also check out
