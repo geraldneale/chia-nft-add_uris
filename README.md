@@ -6,10 +6,12 @@ This works for me on my collection that I created using an NFT naming scheme tha
 Before and After Screenshots
 ----------------------------
 Before:
-![Screenshot from 2022-11-02 12-10-58](https://user-images.githubusercontent.com/53587595/199543364-604714ff-665b-4765-81e5-2dba207292ad.png)
+![199543364-604714ff-665b-4765-81e5-2dba207292ad](https://user-images.githubusercontent.com/53587595/199611054-a124bcba-81af-44cf-af9d-703dbde68965.png)
+
 
 After:
-Coming soon!!!
+![Screenshot from 2022-11-02 12-10-58](https://user-images.githubusercontent.com/53587595/199610705-3b0d2df9-a001-42b6-b7f8-c4293fd12e9d.png)
+
 
 
 Also check out
